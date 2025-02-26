@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vombate-Nariz-Peludo-do-Norte</title>
+    <!-- Link para a fonte Open Sans do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Aplicando a fonte Open Sans ao corpo */
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            background: linear-gradient(to right, #9b6412, #a88e19);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #356ea7;
+        }
+        p {
+            text-align: justify;
+            color: #333;
+            line-height: 1.6;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilo para a imagem ampliada */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding-top: 50px;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilo para a legenda */
+        figure {
+            display: inline-block;
+            position: relative;
+            text-align: left; /* Alinhando a legenda à esquerda */
+            margin: 0;
+        }
+
+        figcaption {
+            font-size: 12px;
+            color: #fff;
+            position: absolute;
+            bottom: 10px; /* Colocando a legenda no fundo */
+            left: 10px;  /* Colocando a legenda no canto esquerdo */
+            background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Vombate-Nariz-Peludo-do-Norte</h1>
+        <!-- Primeira imagem com legenda -->
+        <figure>
+            <img src="images/NarizPeludo.png" alt="Vombate-Nariz-Peludo-do-Norte">
+            <figcaption>Direitos autorais: Nigel Shooter</figcaption>
+        </figure>
+        <p>
+            O <strong>Vombate-Nariz-Peludo-do-Norte</strong> (<em>Lasiorhinus krefftii</em>) ou yaminon é uma das três espécies de
+            marsupiais australianos conhecidas como vombates. É um dos mamíferos terrestres mais raros do mundo e está
+            criticamente ameaçado de extinção. 
+        </p>
+        <p>
+            Antigamente, essa espécie era encontrada em Nova Gales do Sul, Victoria e Queensland. Há 100 anos,
+            acreditava-se que estava extinta, até que na década de 1930 uma pequena população de cerca de 30 indivíduos
+            foi descoberta dentro do Parque Nacional Epping Forest, em Queensland. 
+        </p>
+        <p>
+            Para proteger a espécie contra predadores, como cães selvagens, em 2002 foi construída uma cerca de 20 km
+            à prova de predadores ao redor do habitat no parque. Além disso, populações foram translocadas para dois
+            outros locais para garantir sua sobrevivência contra incêndios, inundações ou doenças.
+        </p>
+        <p>
+            Em 2003, a população total era de apenas 113 indivíduos, incluindo cerca de 30 fêmeas reprodutoras. Com
+            esforços de conservação, o número cresceu para 230 em 2015, ultrapassou 300 em 2021 e superou 400 em 2024.
+        </p>
+        
+        <h2>Galeria de Imagens</h2>
+        <div class="gallery">
+            <!-- Imagens com direitos autorais nas legendas -->
+            <figure>
+                <img src="images/Lasiorhinus1.png" alt="Vombate 1" onclick="openModal(this)">
+                <figcaption>Direitos autorais: Nigel Shooter</figcaption>
+            </figure>
+            <figure>
+                <img src="images/Lasiorhinus2.png" alt="Vombate 2" onclick="openModal(this)">
+                <figcaption>Direitos autorais: Nigel Shooter</figcaption>
+            </figure>
+            <figure>
+                <img src="images/Lasiorhinus3.png" alt="Vombate 3" onclick="openModal(this)">
+                <figcaption>Direitos autorais: Nigel Shooter</figcaption>
+            </figure>
+            <figure>
+                <img src="images/Lasiorhinus4.png" alt="Vombate 4" onclick="openModal(this)">
+                <figcaption>Direitos autorais: Nigel Shooter</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <!-- Modal de imagem -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Função para abrir o modal e exibir a imagem ampliada
+        function openModal(img) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            var modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // Fechar o modal se clicar fora da imagem
+        window.onclick = function(event) {
+            var modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
